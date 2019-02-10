@@ -98,5 +98,9 @@ $ kbenv uninstall v1.9.11
 The version v1.9.11 is uninstalled!
 ```
 
+## Related Projects
+There's a similar project for managing [helm
+versions](https://github.com/alexppg/helmenv).
+
 ## License
 GPL3
