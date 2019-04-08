@@ -53,6 +53,10 @@ function kbenv_list_remote () {
 function kbenv_install () {
     VERSION="$1"
 
+    if [[ -z "$VERSION" ]] && [[ -t 1 && -z ${KBENV_IGNORE_FZF:-} && "$(type fzf &>/dev/null; echo $?)" -eq 0 ]]; then
+        VERSION=$(kbenv_list_remote | fzf)
+    fi
+
     if [[ -z "$VERSION" ]]
     then
         echo "You must specify a version!"
@@ -106,6 +110,10 @@ function kbenv_install () {
 function kbenv_uninstall(){
     VERSION="$1"
 
+    if [[ -z "$VERSION" ]] && [[ -t 1 && -z ${KBENV_IGNORE_FZF:-} && "$(type fzf &>/dev/null; echo $?)" -eq 0 ]]; then
+        VERSION=$(kbenv_list | fzf)
+    fi
+
     if [[ -z "$VERSION" ]]
     then
         echo "You must specify a version!"
@@ -128,6 +136,10 @@ function kbenv_list(){
 
 function kbenv_use(){
     VERSION="$1"
+
+    if [[ -z "$VERSION" ]] && [[ -t 1 && -z ${KBENV_IGNORE_FZF:-} && "$(type fzf &>/dev/null; echo $?)" -eq 0 ]]; then
+        VERSION=$(kbenv_list | fzf)
+    fi
 
     if [[ -z "$VERSION" ]]
     then
