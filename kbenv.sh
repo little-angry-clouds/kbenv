@@ -32,10 +32,10 @@ function _kbenv_get_so_and_arch(){
         *)      architecture="UNKNOWN:${_arch}"
     esac
 
-    if [[ "$machine" = "darwin" && "$architecture" != "amd64" ]]
+    if [[ "$machine" == "darwin" ]]
     then
-        echo "Mac only supports amd64..."
-        return 1
+        echo "$machine/amd64"
+        return 0
     fi
 
     echo "$machine/$architecture"
@@ -122,7 +122,7 @@ function kbenv_uninstall(){
 }
 
 function kbenv_list(){
-    installed_versions="$(find "${KUBECTL_BINARY_PATH}" -name '*kubectl*' -printf '%f\n' | sed -r 's/kubectl-?//' | sed '/^$/d' | sort --version-sort)"
+    installed_versions="$(find "${KUBECTL_BINARY_PATH}"/ -name '*kubectl*' -printf '%f\n' | sed -r 's/kubectl-?//' | sed '/^$/d' | sort --version-sort)"
     echo "$installed_versions"
 }
 
@@ -135,7 +135,7 @@ function kbenv_use(){
         return 1
     fi
 
-    installed="$(find "$KUBECTL_BINARY_PATH" -name "*$VERSION*")"
+    installed="$(find "$KUBECTL_BINARY_PATH"/ -name "*$VERSION*")"
 
     if [[ -z "$installed" ]]
     then
