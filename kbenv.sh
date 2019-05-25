@@ -130,7 +130,7 @@ function kbenv_uninstall(){
 }
 
 function kbenv_list(){
-    installed_versions="$(find "${KUBECTL_BINARY_PATH}"/ -name '*kubectl*' -printf '%f\n' | sed -r 's/kubectl-?//' | sed '/^$/d' | sort --version-sort)"
+    installed_versions="$(find "${KUBECTL_BINARY_PATH}"/ -name '*kubectl*' -printf '%f\n' | grep -Eo 'v([0-9]\.?)+$' | sed '/^$/d' | sort --version-sort)"
     echo "$installed_versions"
 }
 
