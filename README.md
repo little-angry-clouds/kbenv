@@ -1,4 +1,13 @@
 # kbenv
+
+**DISCLAIMER**
+This project is discontinued, but there's a better version
+[here](https://github.com/little-angry-clouds/kubernetes-binaries-managers/tree/master/cmd/kbenv).
+You may check the reasons behind that decision
+[here](https://github.com/little-angry-clouds/kubernetes-binaries-managers/tree/master/cmd/kbenv#why-migrate-from-bash-to-go).
+And you can see how to migrate to the new project
+[here](https://github.com/little-angry-clouds/kubernetes-binaries-managers/tree/master/cmd/kbenv#how-to-migrate-from-the-bash-version).
+
 [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) version
 manager inspired by [tfenv](https://github.com/tfutils/tfenv/).
 
